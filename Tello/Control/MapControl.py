@@ -41,7 +41,7 @@ class VideoControl:
     def get_button(self):
         for event in self.events:
             if event.type == pg.JOYBUTTONDOWN:
-                return self.button_map[event.button]
+                return event.button
         return None
 
     def get_axis_position(self, axis):
@@ -72,8 +72,9 @@ if __name__ == "__main__":
     while True:
         control.events = pg.event.get()
         button_pressed = control.get_button()
-        axis = control.get_axis_position(2)
+        # print(type(button_pressed))
+        axis = control.get_axis_position(3)
         hat = control.get_dir()
-        if axis is not None:
-            print(axis)
+        if button_pressed is not None:
+           print(button_pressed)
 
